@@ -15,7 +15,8 @@
 
 ## 3. 包职责
 
-- `core.agent`：Agent 定义、请求、结果、上下文和运行时编排。
+- `core.agent.definition`：Agent 定义及其加载契约。
+- `core.agent.runtime`：Agent 请求、结果、上下文和运行时编排。
 - `core.model`：模型调用契约及平台统一模型对象。
 - `core.prompt`：Prompt 定义和加载契约。
 - `core.tool`：工具描述、发现和注册契约。
@@ -26,13 +27,20 @@
 - `api`：HTTP 接口和传输对象，不编写 Agent 编排逻辑。
 - `infrastructure`：Spring AI、存储和外部系统等技术实现。
 - `configuration`：Spring Bean 与配置属性装配。
+- 包按业务能力和功能职责划分，禁止仅按 `entity`、`interface`、`service`、`impl` 等 Java 类型机械分包。
+- 接口和与其紧密相关的领域对象可以放在同一个功能包中；接口的技术实现放在 `infrastructure` 对应能力包中。
 
 ## 4. Java 编码规范
 
 - 使用 Java 21，类名使用 UpperCamelCase，方法和变量使用 lowerCamelCase，常量使用 UPPER_SNAKE_CASE。
-- 优先使用构造器注入，禁止字段注入。
+- 项目统一使用传统 Java 类，不使用 `record`，除非任务明确要求。
+- DTO、Command、Result、Definition、配置对象等数据承载类统一使用 Lombok `@Data`，不手写 Getter 和 Setter。
+- 不手写仅用于字段赋值的样板构造方法；框架需要时使用 Lombok `@NoArgsConstructor`、`@AllArgsConstructor` 或 `@RequiredArgsConstructor`。
+- Spring Controller、Service、Configuration 和 Adapter 等行为类不使用 `@Data`；它们使用 `final` 依赖字段和 Lombok `@RequiredArgsConstructor` 完成构造器注入。
+- 禁止字段注入；接口、枚举和异常类不强制使用 Lombok。异常需要调用父类构造方法时，可以显式编写有业务意义的构造方法。
 - API DTO、领域对象和持久化对象相互独立，禁止用一个对象贯穿所有层。
-- 对稳定且只承载数据的不可变对象，优先考虑 `record`。
+- 所有新增类和接口必须有说明职责的中文类级注释；公开方法、关键字段和不直观的业务逻辑必须添加中文注释。
+- 注释解释业务目的、边界或设计原因，禁止只把代码逐字翻译成注释。
 - 禁止在 Controller 中直接调用 `ChatClient`、拼接 Prompt 或处理 Tool Calling。
 - 禁止在 Core 中直接引用 `ChatClient`、`ChatModel`、Advisor 或数据库框架类型。
 - 异常应表达明确语义，禁止无说明地捕获并忽略异常。

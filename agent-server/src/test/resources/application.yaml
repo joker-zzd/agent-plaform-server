@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: agent-platform-test
+  ai:
+    openai:
+      # 测试只验证 Spring Bean 装配，不会向模型服务发送请求。
+      api-key: test-api-key
