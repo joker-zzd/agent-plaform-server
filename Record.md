@@ -97,3 +97,28 @@
 
 - 配置真实模型服务后，对 `general-agent` 和 `code-agent` 执行接口联调。
 - 下一阶段可增加执行记录端口，保存 executionId、Token、耗时和状态。
+
+## 2026-08-26｜任务 004：整理项目 README 技术栈
+
+### 任务目标
+
+- 在 README 中记录实现通用 Agent 平台需要使用的技术栈和各组件职责。
+
+### 本次变更
+
+- 补充项目目标、总体架构和模块依赖方向。
+- 区分当前已引入技术与后续计划接入技术。
+- 明确 PostgreSQL、Redis、pgvector 和 MinIO 的存储职责。
+- 补充 Agent Runtime、Prompt、Tool、Memory、RAG、权限和审计能力规划。
+- 增加分阶段实施路线、当前进度、本地运行方式和接口示例。
+
+### 关键决策
+
+- PostgreSQL 作为永久数据的主要事实来源，Redis 只承担短期 Memory、缓存和运行时状态。
+- 初期使用 PostgreSQL + pgvector 完成关系数据和向量数据存储，避免过早引入独立向量数据库。
+- 技术栈表明确标记“当前已引入”和“计划接入”，避免文档状态与代码实现不一致。
+
+### 验证结果
+
+- 已核对 README 中的当前版本与父 POM、Server POM 保持一致。
+- 本次只修改 Markdown 文档，无需执行 Maven 构建。
