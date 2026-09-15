@@ -243,8 +243,8 @@ Content-Type: application/json
 
 | 文档 | 地址 |
 |---|---|
-| Swagger UI | `http://localhost:8080/swagger-ui.html` |
-| OpenAPI JSON | `http://localhost:8080/v3/api-docs` |
-| OpenAPI YAML | `http://localhost:8080/v3/api-docs.yaml` |
+| Swagger UI | `http://localhost:8090/swagger-ui.html` |
+| OpenAPI JSON | `http://localhost:8090/v3/api-docs` |
+| OpenAPI YAML | `http://localhost:8090/v3/api-docs.yaml` |
 
 Swagger UI 支持直接填写参数并调试接口。生产环境应根据部署安全要求关闭文档端点，或通过认证和网络策略限制访问。

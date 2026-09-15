@@ -160,3 +160,18 @@
 
 - 引入 Spring Security 后，需要明确 Swagger 文档端点的认证和生产环境开放策略。
 - 新增 API 时同步补充操作说明、响应码、DTO Schema 和文档端点测试断言。
+
+## 2026-09-15｜任务 006：调整服务默认端口
+
+### 任务目标
+
+- 避免本机 8080 端口占用，将 Agent Platform 默认端口调整为 8090。
+
+### 本次变更
+
+- 在 Server 应用配置中将 `server.port` 设置为 `8090`。
+- 同步更新 README 中 Swagger UI、OpenAPI JSON 和 OpenAPI YAML 的访问地址。
+
+### 验证结果
+
+- OpenAPI 集成测试使用随机端口运行，不依赖或占用固定的 8090 端口。
