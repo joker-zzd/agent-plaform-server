@@ -216,3 +216,22 @@
 ### 验证结果
 
 - 本次仅修改项目规范和任务记录，未修改代码，无需执行 Maven 构建。
+
+## 2026-09-15｜任务 009：修复 IDE 中数据库密码未刷新问题
+
+### 任务目标
+
+- 解决 IDEA 进程持有旧环境变量时 PostgreSQL 密码验证失败的问题。
+
+### 本次变更
+
+- Spring Boot 启动时可选加载用户目录下的 `.agent-platform/application-local.properties`。
+- 数据库密码优先从本机私密配置读取，未配置时再使用 `AGENT_PLATFORM_DB_PASSWORD`。
+- 已为当前电脑生成仓库外的本机私密配置文件。
+- 本次按项目规则未新增或修改测试代码。
+
+### 验证结果
+
+- 执行 `mvn -q package -DskipTests` 成功。
+- 清除当前进程的 `AGENT_PLATFORM_DB_PASSWORD` 后启动应用，证明仓库外的本机私密配置已被正确加载。
+- HikariCP 成功连接 PostgreSQL 17.11，Flyway 成功校验数据库版本，应用启动成功。

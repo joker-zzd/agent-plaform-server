@@ -198,13 +198,21 @@ Chat History
 
 ## 本地运行
 
-首次运行前创建 PostgreSQL 数据库，并通过环境变量提供密码：
+首次运行前创建 PostgreSQL 数据库。数据库密码可以放在仓库外的
+`${user.home}/.agent-platform/application-local.properties`：
+
+```properties
+agent.platform.database.password=<你的 PostgreSQL 密码>
+```
+
+也可以通过环境变量提供：
 
 ```powershell
 $env:AGENT_PLATFORM_DB_PASSWORD = '<你的 PostgreSQL 密码>'
 $env:OPENAI_API_KEY = '<你的 OpenAI API Key>'
 ```
 
+本机私密配置优先于密码环境变量，用于避免 IDE 未刷新环境变量时使用旧密码。
 默认连接为 `jdbc:postgresql://localhost:5432/agent_platform`，用户名为 `postgres`。如需覆盖，可设置
 `AGENT_PLATFORM_DB_URL` 和 `AGENT_PLATFORM_DB_USERNAME`。数据库变更统一放在
 `agent-server/src/main/resources/db/migration`，由 Flyway 在启动时执行。

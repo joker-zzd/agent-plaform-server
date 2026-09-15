@@ -2,13 +2,17 @@ server:
   port: 8090
 
 spring:
+  config:
+    # 本机私密配置位于仓库外，避免密码进入 Git。
+    import: optional:file:${user.home}/.agent-platform/application-local.properties
+
   application:
     name: agent-platform
 
   datasource:
     url: ${AGENT_PLATFORM_DB_URL:jdbc:postgresql://localhost:5432/agent_platform}
     username: ${AGENT_PLATFORM_DB_USERNAME:postgres}
-    password: ${AGENT_PLATFORM_DB_PASSWORD}
+    password: ${agent.platform.database.password:${AGENT_PLATFORM_DB_PASSWORD}}
     driver-class-name: org.postgresql.Driver
     hikari:
       pool-name: agent-platform-pool
