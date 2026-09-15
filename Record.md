@@ -136,7 +136,7 @@
 - 在父 POM 中统一管理 Springdoc 和 Swagger Annotations 版本。
 - 在 `agent-server` 中引入 Springdoc Web MVC UI，并处理 Spring AI 引入的 Swagger 注解版本冲突。
 - 新增 `OpenApiConfiguration`，集中定义平台标题、版本、说明和 Agent Runtime 标签。
-- 为 Agent 执行接口补充操作说明、路径参数、成功响应、错误响应和示例。
+- 为 Agent  执行接口补充操作说明、路径参数、成功响应、错误响应和示例。
 - 为 API 请求、响应和错误 DTO 补充字段说明与示例。
 - 配置 Swagger UI 路径、排序、请求耗时显示和在线调试。
 - 在 README 中增加 Swagger UI、OpenAPI JSON 和 OpenAPI YAML 访问地址。
