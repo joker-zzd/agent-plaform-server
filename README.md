@@ -198,6 +198,17 @@ Chat History
 
 ## 本地运行
 
+首次运行前创建 PostgreSQL 数据库，并通过环境变量提供密码：
+
+```powershell
+$env:AGENT_PLATFORM_DB_PASSWORD = '<你的 PostgreSQL 密码>'
+$env:OPENAI_API_KEY = '<你的 OpenAI API Key>'
+```
+
+默认连接为 `jdbc:postgresql://localhost:5432/agent_platform`，用户名为 `postgres`。如需覆盖，可设置
+`AGENT_PLATFORM_DB_URL` 和 `AGENT_PLATFORM_DB_USERNAME`。数据库变更统一放在
+`agent-server/src/main/resources/db/migration`，由 Flyway 在启动时执行。
+
 ### 环境要求
 
 - JDK 21

@@ -175,3 +175,29 @@
 ### 验证结果
 
 - OpenAPI 集成测试使用随机端口运行，不依赖或占用固定的 8090 端口。
+
+## 2026-09-15｜任务 007：接入 PostgreSQL
+
+### 任务目标
+
+- 为 `agent-server` 建立 PostgreSQL 数据源和可版本化的数据库迁移基础。
+- 保持数据库密码与源码、默认配置分离。
+
+### 本次变更
+
+- 引入 Spring Data JDBC、PostgreSQL JDBC Driver 和 Flyway PostgreSQL 支持。
+- 默认连接本机 `agent_platform` 数据库，并支持通过环境变量覆盖连接参数。
+- 增加 HikariCP 连接池基础配置和 Flyway V1 基线迁移。
+- 测试环境使用 PostgreSQL 兼容模式的 H2，避免普通单元测试依赖本机数据库。
+
+### 关键决策
+
+- 密码只从 `AGENT_PLATFORM_DB_PASSWORD` 读取，不写入仓库。
+- 当前只建立迁移基线，不在数据源接入任务中提前设计 Agent、Prompt 等业务表。
+
+### 验证结果
+
+- 已创建本机 `agent_platform` 数据库，并验证 `postgres` 用户可正常连接。
+- 使用 Microsoft OpenJDK 21.0.12.1 执行 `mvn -q clean test package`，构建和全部测试通过。
+- 应用成功连接 PostgreSQL 17.11，HikariCP 连接池启动成功。
+- Flyway 成功执行 V1 迁移，`flyway_schema_history` 记录版本 1 状态为成功。

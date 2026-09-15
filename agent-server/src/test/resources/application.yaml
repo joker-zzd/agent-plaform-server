@@ -1,6 +1,13 @@
 spring:
   application:
     name: agent-platform-test
+  datasource:
+    url: jdbc:h2:mem:agent-platform-test;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  flyway:
+    enabled: false
   ai:
     openai:
       # 测试只验证 Spring Bean 装配，不会向模型服务发送请求。
