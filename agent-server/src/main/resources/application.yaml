@@ -14,3 +14,13 @@ agent:
     model:
       # 平台模型标识，后续用于多模型路由配置。
       default-model: default-model
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+    display-request-duration: true
+    try-it-out-enabled: true

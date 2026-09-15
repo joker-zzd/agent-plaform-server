@@ -122,3 +122,41 @@
 
 - 已核对 README 中的当前版本与父 POM、Server POM 保持一致。
 - 本次只修改 Markdown 文档，无需执行 Maven 构建。
+
+## 2026-09-15｜任务 005：接入 OpenAPI 与 Swagger UI
+
+### 任务目标
+
+- 为现有 Agent REST API 生成清晰、可调试的 OpenAPI 文档。
+- 保持 Swagger 相关类型仅存在于 Server/API 层，不污染 Agent Core。
+- 通过真实 HTTP 端点测试验证 OpenAPI JSON 和 Swagger UI 可以访问。
+
+### 本次变更
+
+- 在父 POM 中统一管理 Springdoc 和 Swagger Annotations 版本。
+- 在 `agent-server` 中引入 Springdoc Web MVC UI，并处理 Spring AI 引入的 Swagger 注解版本冲突。
+- 新增 `OpenApiConfiguration`，集中定义平台标题、版本、说明和 Agent Runtime 标签。
+- 为 Agent 执行接口补充操作说明、路径参数、成功响应、错误响应和示例。
+- 为 API 请求、响应和错误 DTO 补充字段说明与示例。
+- 配置 Swagger UI 路径、排序、请求耗时显示和在线调试。
+- 在 README 中增加 Swagger UI、OpenAPI JSON 和 OpenAPI YAML 访问地址。
+- 新增 OpenAPI 端点集成测试，通过随机端口访问真实 HTTP 服务。
+
+### 关键决策
+
+- 当前接口数量较少，不额外抽取 API Contract 接口，保持路由、文档和 Controller 实现集中可见。
+- OpenAPI 注解只用于 `agent-server` 的 HTTP DTO 和 Controller，Core 继续保持技术无关。
+- 文档只描述当前真实能力，明确动态变量、多轮记忆、Tool Calling 和流式输出尚未实现。
+- Spring AI 2.0.1 传递引入旧版 Swagger 注解，因此在其依赖边界排除旧版本，统一使用与 Springdoc 3.0.3 匹配的 2.2.47。
+
+### 验证结果
+
+- 使用 Microsoft OpenJDK 21.0.12.1 执行 `mvn -q clean test` 成功。
+- 共执行 4 个测试，0 失败、0 错误、0 跳过。
+- `/v3/api-docs` 返回 HTTP 200，包含 Agent 执行路径、operationId 和三个 API Schema。
+- `/swagger-ui.html` 跟随重定向后返回 HTTP 200，Swagger UI 页面可正常加载。
+
+### 后续事项
+
+- 引入 Spring Security 后，需要明确 Swagger 文档端点的认证和生产环境开放策略。
+- 新增 API 时同步补充操作说明、响应码、DTO Schema 和文档端点测试断言。
