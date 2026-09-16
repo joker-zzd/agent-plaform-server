@@ -1,33 +1,26 @@
-server:
-  port: 8090
-
 spring:
+  application:
+    name: agent-platform
+  profiles:
+    # 未显式指定环境时使用开发环境，可通过 SPRING_PROFILES_ACTIVE 覆盖。
+    default: dev
   config:
     # 本机私密配置位于仓库外，避免密码进入 Git。
     import: optional:file:${user.home}/.agent-platform/application-local.properties
 
-  application:
-    name: agent-platform
-
   datasource:
-    url: ${AGENT_PLATFORM_DB_URL:jdbc:postgresql://localhost:5432/agent_platform}
-    username: ${AGENT_PLATFORM_DB_USERNAME:postgres}
-    password: ${agent.platform.database.password:${AGENT_PLATFORM_DB_PASSWORD}}
     driver-class-name: org.postgresql.Driver
     hikari:
       pool-name: agent-platform-pool
-      maximum-pool-size: 10
-      minimum-idle: 2
       connection-timeout: 30000
 
   flyway:
-    enabled: true
     locations: classpath:db/migration
     validate-migration-naming: true
 
   ai:
     openai:
-      # 密钥只从环境变量读取，禁止将真实密钥提交到仓库。
+      # 密钥只从环境变量或仓库外的本机配置读取。
       api-key: ${OPENAI_API_KEY}
       chat:
         model: ${OPENAI_MODEL:gpt-4o-mini}
@@ -46,4 +39,3 @@ springdoc:
     operations-sorter: method
     tags-sorter: alpha
     display-request-duration: true
-    try-it-out-enabled: true

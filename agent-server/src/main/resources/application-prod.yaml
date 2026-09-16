@@ -1,0 +1,21 @@
+server:
+  port: ${SERVER_PORT:8090}
+
+spring:
+  datasource:
+    # 生产环境不提供默认连接信息，缺失环境变量时应直接启动失败。
+    url: ${AGENT_PLATFORM_DB_URL}
+    username: ${AGENT_PLATFORM_DB_USERNAME}
+    password: ${AGENT_PLATFORM_DB_PASSWORD}
+    hikari:
+      maximum-pool-size: ${AGENT_PLATFORM_DB_MAX_POOL_SIZE:20}
+      minimum-idle: ${AGENT_PLATFORM_DB_MIN_IDLE:5}
+  flyway:
+    enabled: true
+
+# 生产环境默认关闭接口文档，减少不必要的对外暴露。
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false

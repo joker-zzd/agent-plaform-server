@@ -1,0 +1,20 @@
+server:
+  port: ${SERVER_PORT:8091}
+
+spring:
+  datasource:
+    url: ${AGENT_PLATFORM_DB_URL:jdbc:postgresql://localhost:5432/agent_platform_test}
+    username: ${AGENT_PLATFORM_DB_USERNAME:postgres}
+    password: ${agent.platform.database.password:${AGENT_PLATFORM_DB_PASSWORD}}
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 1
+  flyway:
+    enabled: true
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    try-it-out-enabled: true
