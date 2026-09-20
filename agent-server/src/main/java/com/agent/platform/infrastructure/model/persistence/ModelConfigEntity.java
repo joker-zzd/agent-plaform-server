@@ -23,12 +23,15 @@ public class ModelConfigEntity {
 
     /** 平台内部模型唯一标识。 */
     @Id
+    @Column("id")
     private String id;
 
     /** 模型配置显示名称。 */
+    @Column("name")
     private String name;
 
     /** 模型供应商标识。 */
+    @Column("provider")
     private String provider;
 
     /** 模型供应商定义的真实模型名称。 */
@@ -44,6 +47,7 @@ public class ModelConfigEntity {
     private String credentialKey;
 
     /** 模型生成随机性参数。 */
+    @Column("temperature")
     private BigDecimal temperature;
 
     /** 模型单次调用允许生成的最大 Token 数量。 */
@@ -51,6 +55,7 @@ public class ModelConfigEntity {
     private Integer maxTokens;
 
     /** 模型配置是否启用。 */
+    @Column("enabled")
     private Boolean enabled;
 
     /** 模型供应商专属扩展配置，内容为 JSON。 */

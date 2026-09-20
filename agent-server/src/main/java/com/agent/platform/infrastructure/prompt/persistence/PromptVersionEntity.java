@@ -23,6 +23,7 @@ public class PromptVersionEntity {
 
     /** Prompt 版本记录唯一标识。 */
     @Id
+    @Column("id")
     private UUID id;
 
     /** 所属 Prompt 的唯一标识。 */
@@ -30,6 +31,7 @@ public class PromptVersionEntity {
     private String promptId;
 
     /** Prompt 版本号。 */
+    @Column("version")
     private Integer version;
 
     /** 当前版本的 System Prompt 正文。 */
@@ -41,6 +43,7 @@ public class PromptVersionEntity {
     private String variableSchema;
 
     /** 版本状态。 */
+    @Column("status")
     private String status;
 
     /** 当前版本的变更说明。 */

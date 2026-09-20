@@ -22,12 +22,15 @@ public class AgentDefinitionEntity {
 
     /** Agent 唯一业务标识。 */
     @Id
+    @Column("id")
     private String id;
 
     /** Agent 显示名称。 */
+    @Column("name")
     private String name;
 
     /** Agent 用途和能力说明。 */
+    @Column("description")
     private String description;
 
     /** Agent 默认使用的模型配置标识。 */
@@ -43,6 +46,7 @@ public class AgentDefinitionEntity {
     private Integer promptVersion;
 
     /** Agent 状态。 */
+    @Column("status")
     private String status;
 
     /** Agent 运行扩展配置，内容为 JSON。 */

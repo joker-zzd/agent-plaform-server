@@ -22,6 +22,7 @@ public class ChatSessionEntity {
 
     /** 会话唯一标识。 */
     @Id
+    @Column("id")
     private String id;
 
     /** 当前会话使用的 Agent 标识。 */
@@ -33,12 +34,15 @@ public class ChatSessionEntity {
     private String userId;
 
     /** 会话标题。 */
+    @Column("title")
     private String title;
 
     /** 会话状态。 */
+    @Column("status")
     private String status;
 
     /** 会话扩展信息，内容为 JSON。 */
+    @Column("metadata")
     private String metadata;
 
     /** 最后一条消息的产生时间。 */

@@ -23,6 +23,7 @@ public class ChatMessageEntity {
 
     /** 消息唯一标识。 */
     @Id
+    @Column("id")
     private UUID id;
 
     /** 消息所属会话标识。 */
@@ -38,9 +39,11 @@ public class ChatMessageEntity {
     private Long sequenceNo;
 
     /** 消息角色。 */
+    @Column("role")
     private String role;
 
     /** 消息正文。 */
+    @Column("content")
     private String content;
 
     /** 消息内容类型。 */
@@ -52,6 +55,7 @@ public class ChatMessageEntity {
     private Integer tokenCount;
 
     /** 消息扩展信息，内容为 JSON。 */
+    @Column("metadata")
     private String metadata;
 
     /** 创建时间。 */

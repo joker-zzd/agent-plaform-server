@@ -23,6 +23,7 @@ public class AgentExecutionEntity {
 
     /** Agent 执行记录唯一标识。 */
     @Id
+    @Column("id")
     private UUID id;
 
     /** 调用方提供的幂等请求标识。 */
@@ -54,6 +55,7 @@ public class AgentExecutionEntity {
     private Integer promptVersion;
 
     /** 执行状态。 */
+    @Column("status")
     private String status;
 
     /** 用户输入内容。 */

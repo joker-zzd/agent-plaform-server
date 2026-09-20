@@ -23,6 +23,7 @@ public class ExecutionStepEntity {
 
     /** 执行步骤唯一标识。 */
     @Id
+    @Column("id")
     private UUID id;
 
     /** 步骤所属的 Agent 执行记录标识。 */
@@ -38,9 +39,11 @@ public class ExecutionStepEntity {
     private String stepType;
 
     /** 执行步骤名称。 */
+    @Column("name")
     private String name;
 
     /** 执行步骤状态。 */
+    @Column("status")
     private String status;
 
     /** 步骤请求数据，内容为 JSON。 */
