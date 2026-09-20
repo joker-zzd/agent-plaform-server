@@ -11,14 +11,14 @@ import org.springframework.data.relational.core.mapping.Table;
 import java.time.OffsetDateTime;
 
 /**
- * Prompt 定义持久化实体，对应 {@code prompt_definition} 表。
+ * Prompt 定义数据对象，对应 {@code prompt_definition} 表。
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table("prompt_definition")
-public class PromptDefinitionEntity {
+public class PromptDefinitionDO {
 
     /** Prompt 唯一业务标识。 */
     @Id

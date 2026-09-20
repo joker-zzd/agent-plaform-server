@@ -12,14 +12,14 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 /**
- * 聊天消息持久化实体，对应 {@code chat_message} 表。
+ * 聊天消息数据对象，对应 {@code chat_message} 表。
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table("chat_message")
-public class ChatMessageEntity {
+public class ChatMessageDO {
 
     /** 消息唯一标识。 */
     @Id

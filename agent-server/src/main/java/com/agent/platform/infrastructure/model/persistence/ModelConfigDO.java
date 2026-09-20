@@ -12,14 +12,14 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 /**
- * 模型配置持久化实体，对应 {@code model_config} 表。
+ * 模型配置数据对象，对应 {@code model_config} 表。
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table("model_config")
-public class ModelConfigEntity {
+public class ModelConfigDO {
 
     /** 平台内部模型唯一标识。 */
     @Id

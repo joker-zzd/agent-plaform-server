@@ -11,14 +11,14 @@ import org.springframework.data.relational.core.mapping.Table;
 import java.time.OffsetDateTime;
 
 /**
- * 聊天会话持久化实体，对应 {@code chat_session} 表。
+ * 聊天会话数据对象，对应 {@code chat_session} 表。
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table("chat_session")
-public class ChatSessionEntity {
+public class ChatSessionDO {
 
     /** 会话唯一标识。 */
     @Id

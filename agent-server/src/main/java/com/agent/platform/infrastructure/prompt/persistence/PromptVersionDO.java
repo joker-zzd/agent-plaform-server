@@ -12,14 +12,14 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 /**
- * Prompt 版本持久化实体，对应 {@code prompt_version} 表。
+ * Prompt 版本数据对象，对应 {@code prompt_version} 表。
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table("prompt_version")
-public class PromptVersionEntity {
+public class PromptVersionDO {
 
     /** Prompt 版本记录唯一标识。 */
     @Id

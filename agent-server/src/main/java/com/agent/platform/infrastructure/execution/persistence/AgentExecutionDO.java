@@ -12,14 +12,14 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 /**
- * Agent 单次执行持久化实体，对应 {@code agent_execution} 表。
+ * Agent 单次执行数据对象，对应 {@code agent_execution} 表。
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table("agent_execution")
-public class AgentExecutionEntity {
+public class AgentExecutionDO {
 
     /** Agent 执行记录唯一标识。 */
     @Id

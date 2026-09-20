@@ -11,14 +11,14 @@ import org.springframework.data.relational.core.mapping.Table;
 import java.time.OffsetDateTime;
 
 /**
- * Agent 定义持久化实体，对应 {@code agent_definition} 表。
+ * Agent 定义数据对象，对应 {@code agent_definition} 表。
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table("agent_definition")
-public class AgentDefinitionEntity {
+public class AgentDefinitionDO {
 
     /** Agent 唯一业务标识。 */
     @Id

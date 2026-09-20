@@ -12,14 +12,14 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 /**
- * Agent 执行步骤持久化实体，对应 {@code execution_step} 表。
+ * Agent 执行步骤数据对象，对应 {@code execution_step} 表。
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table("execution_step")
-public class ExecutionStepEntity {
+public class ExecutionStepDO {
 
     /** 执行步骤唯一标识。 */
     @Id
