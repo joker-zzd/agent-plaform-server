@@ -11,6 +11,9 @@ spring:
       minimum-idle: 2
   flyway:
     enabled: true
+    # 兼容已手工创建 V1 表结构、但尚未纳入 Flyway 管理的本地数据库。
+    baseline-on-migrate: true
+    baseline-version: 1
 
 springdoc:
   api-docs:
