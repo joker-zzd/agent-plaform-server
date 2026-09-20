@@ -26,6 +26,9 @@ public class AgentDefinition {
     /** System Prompt 唯一标识。 */
     private String systemPromptId;
 
+    /** 固定使用的 Prompt 版本号，为空时使用当前发布版本。 */
+    private Integer promptVersion;
+
     /** 平台内部模型唯一标识。 */
     private String modelId;
 }

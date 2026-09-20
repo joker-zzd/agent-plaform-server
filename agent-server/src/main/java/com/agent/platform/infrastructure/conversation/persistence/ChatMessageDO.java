@@ -1,5 +1,6 @@
 package com.agent.platform.infrastructure.conversation.persistence;
 
+import com.agent.platform.infrastructure.persistence.json.JsonbValue;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -56,7 +57,7 @@ public class ChatMessageDO {
 
     /** 消息扩展信息，内容为 JSON。 */
     @Column("metadata")
-    private String metadata;
+    private JsonbValue metadata;
 
     /** 创建时间。 */
     @Column("created_time")

@@ -1,5 +1,6 @@
 package com.agent.platform.infrastructure.execution.persistence;
 
+import com.agent.platform.infrastructure.persistence.json.JsonbValue;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -48,11 +49,11 @@ public class ExecutionStepDO {
 
     /** 步骤请求数据，内容为 JSON。 */
     @Column("request_data")
-    private String requestData;
+    private JsonbValue requestData;
 
     /** 步骤响应数据，内容为 JSON。 */
     @Column("response_data")
-    private String responseData;
+    private JsonbValue responseData;
 
     /** 步骤执行失败时的错误说明。 */
     @Column("error_message")

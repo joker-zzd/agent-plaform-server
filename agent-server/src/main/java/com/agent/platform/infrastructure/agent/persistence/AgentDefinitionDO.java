@@ -1,5 +1,6 @@
 package com.agent.platform.infrastructure.agent.persistence;
 
+import com.agent.platform.infrastructure.persistence.json.JsonbValue;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -51,7 +52,7 @@ public class AgentDefinitionDO {
 
     /** Agent 运行扩展配置，内容为 JSON。 */
     @Column("runtime_config")
-    private String runtimeConfig;
+    private JsonbValue runtimeConfig;
 
     /** 创建人标识。 */
     @Column("created_by")

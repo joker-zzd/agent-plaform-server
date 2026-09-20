@@ -1,5 +1,6 @@
 package com.agent.platform.infrastructure.prompt.persistence;
 
+import com.agent.platform.infrastructure.persistence.json.JsonbValue;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -40,7 +41,7 @@ public class PromptVersionDO {
 
     /** 动态变量及其约束，内容为 JSON。 */
     @Column("variable_schema")
-    private String variableSchema;
+    private JsonbValue variableSchema;
 
     /** 版本状态。 */
     @Column("status")

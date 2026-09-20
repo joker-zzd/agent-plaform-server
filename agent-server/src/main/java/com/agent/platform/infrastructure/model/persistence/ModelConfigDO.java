@@ -1,5 +1,6 @@
 package com.agent.platform.infrastructure.model.persistence;
 
+import com.agent.platform.infrastructure.persistence.json.JsonbValue;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -60,7 +61,7 @@ public class ModelConfigDO {
 
     /** 模型供应商专属扩展配置，内容为 JSON。 */
     @Column("extra_config")
-    private String extraConfig;
+    private JsonbValue extraConfig;
 
     /** 创建时间。 */
     @Column("created_time")

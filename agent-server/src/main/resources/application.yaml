@@ -27,6 +27,9 @@ spring:
 
 agent:
   platform:
+    persistence:
+      # 默认使用数据库持久化实现；本地演示时可设置为 memory。
+      type: ${AGENT_PLATFORM_PERSISTENCE_TYPE:jdbc}
     model:
       # 平台模型标识，后续用于多模型路由配置。
       default-model: default-model

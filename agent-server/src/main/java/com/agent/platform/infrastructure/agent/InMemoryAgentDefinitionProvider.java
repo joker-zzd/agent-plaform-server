@@ -3,6 +3,7 @@ package com.agent.platform.infrastructure.agent;
 import com.agent.platform.core.agent.definition.AgentDefinition;
 import com.agent.platform.core.agent.definition.AgentDefinitionProvider;
 import com.agent.platform.core.exception.AgentResourceNotFoundException;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -13,6 +14,11 @@ import java.util.Map;
  * <p>当前用于验证通用 Runtime，后续可以替换为配置文件或数据库实现。</p>
  */
 @Component
+@ConditionalOnProperty(
+        prefix = "agent.platform.persistence",
+        name = "type",
+        havingValue = "memory"
+)
 public class InMemoryAgentDefinitionProvider implements AgentDefinitionProvider {
 
     /** 预置两个不同定位的 Agent，用于验证配置与 Runtime 已经解耦。 */

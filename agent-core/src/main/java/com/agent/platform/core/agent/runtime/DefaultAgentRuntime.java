@@ -29,7 +29,7 @@ public class DefaultAgentRuntime implements AgentRuntime {
     @Override
     public AgentResult execute(AgentRequest request) {
         AgentDefinition agentDefinition = agentDefinitionProvider.getRequired(request.getAgentId());
-        PromptDefinition promptDefinition = promptProvider.getRequired(agentDefinition.getSystemPromptId());
+        PromptDefinition promptDefinition = loadPrompt(agentDefinition);
 
         ModelRequest modelRequest = ModelRequest.builder()
                 .modelId(agentDefinition.getModelId())
@@ -46,5 +46,16 @@ public class DefaultAgentRuntime implements AgentRuntime {
                 .modelId(agentDefinition.getModelId())
                 .content(modelResult.getContent())
                 .build();
+    }
+
+    /**
+     * 根据 Agent 配置加载固定版本或当前发布版本的 Prompt。
+     */
+    private PromptDefinition loadPrompt(AgentDefinition agentDefinition) {
+        Integer promptVersion = agentDefinition.getPromptVersion();
+        if (promptVersion == null) {
+            return promptProvider.getPublished(agentDefinition.getSystemPromptId());
+        }
+        return promptProvider.getRequired(agentDefinition.getSystemPromptId(), promptVersion);
     }
 }

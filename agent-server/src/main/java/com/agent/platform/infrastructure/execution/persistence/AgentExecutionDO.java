@@ -1,5 +1,6 @@
 package com.agent.platform.infrastructure.execution.persistence;
 
+import com.agent.platform.infrastructure.persistence.json.JsonbValue;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -64,7 +65,7 @@ public class AgentExecutionDO {
 
     /** 请求携带的动态变量，内容为 JSON。 */
     @Column("input_variables")
-    private String inputVariables;
+    private JsonbValue inputVariables;
 
     /** Agent 生成的最终输出内容。 */
     @Column("output_content")
