@@ -1,11 +1,16 @@
 package com.agent.platform.infrastructure.model.springai;
 
+import com.agent.platform.core.exception.ModelConfigurationException;
+import com.agent.platform.core.model.ModelDefinition;
+import com.agent.platform.core.model.ModelDefinitionProvider;
 import com.agent.platform.core.model.ModelGateway;
 import com.agent.platform.core.model.ModelRequest;
 import com.agent.platform.core.model.ModelResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 /**
  * 使用 Spring AI ChatClient 调用大模型的适配器。
@@ -16,18 +21,22 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class SpringAiModelGateway implements ModelGateway {
 
+    private static final String OPENAI_PROVIDER = "OPENAI";
+
     private final ChatClient chatClient;
+    private final ModelDefinitionProvider modelDefinitionProvider;
+    private final EnvironmentModelCredentialResolver credentialResolver;
 
     /**
      * 将平台模型请求转换为 ChatClient 调用，并返回平台统一结果。
      */
     @Override
     public ModelResult call(ModelRequest request) {
-        /*
-         * 当前只有一个默认 ChatClient，modelId 暂时作为平台路由标识保留。
-         * 接入多模型后由独立的 ModelRouter 根据 modelId 选择具体客户端。
-         */
+        ModelDefinition modelDefinition = modelDefinitionProvider.getRequired(request.getModelId());
+        OpenAiChatOptions.Builder options = createOptions(modelDefinition);
+
         String content = chatClient.prompt()
+                .options(options)
                 .system(request.getSystemPrompt())
                 .user(request.getUserPrompt())
                 .call()
