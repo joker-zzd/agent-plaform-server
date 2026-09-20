@@ -37,4 +37,35 @@ public class SpringAiModelGateway implements ModelGateway {
                 .content(content)
                 .build();
     }
+
+    /**
+     * 将平台模型定义转换为当前 OpenAI 客户端的单次请求参数。
+     */
+    private OpenAiChatOptions.Builder createOptions(ModelDefinition definition) {
+        if (!OPENAI_PROVIDER.equals(definition.getProvider())) {
+            throw new ModelConfigurationException(
+                    "暂不支持模型供应商：" + definition.getProvider()
+            );
+        }
+        if (!StringUtils.hasText(definition.getModelName())) {
+            throw new ModelConfigurationException("模型名称不能为空，模型 ID：" + definition.getId());
+        }
+
+        OpenAiChatOptions.Builder builder = OpenAiChatOptions.builder()
+                .model(definition.getModelName());
+
+        if (definition.getTemperature() != null) {
+            builder.temperature(definition.getTemperature().doubleValue());
+        }
+        if (definition.getMaxTokens() != null) {
+            builder.maxTokens(definition.getMaxTokens());
+        }
+        if (StringUtils.hasText(definition.getBaseUrl())) {
+            builder.baseUrl(definition.getBaseUrl());
+        }
+        if (StringUtils.hasText(definition.getCredentialKey())) {
+            builder.apiKey(credentialResolver.getRequired(definition.getCredentialKey()));
+        }
+        return builder;
+    }
 }
