@@ -28,6 +28,8 @@ public class DefaultAgentRuntime implements AgentRuntime {
      */
     @Override
     public AgentResult execute(AgentRequest request) {
+        // 在任何外部调用前确定执行标识，便于后续串联模型、工具与审计步骤。
+        String executionId = UUID.randomUUID().toString();
         AgentDefinition agentDefinition = agentDefinitionProvider.getRequired(request.getAgentId());
         PromptDefinition promptDefinition = loadPrompt(agentDefinition);
 
@@ -40,7 +42,7 @@ public class DefaultAgentRuntime implements AgentRuntime {
         ModelResult modelResult = modelGateway.call(modelRequest);
 
         return AgentResult.builder()
-                .executionId(UUID.randomUUID().toString())
+                .executionId(executionId)
                 .agentId(agentDefinition.getId())
                 .sessionId(request.getSessionId())
                 .modelId(agentDefinition.getModelId())

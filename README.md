@@ -49,8 +49,15 @@ HTTP 请求
     → AgentDefinitionProvider
     → PromptProvider
     → ModelGateway
+    → RoutingModelGateway（按模型配置的 provider 选择适配器）
+    → ModelProviderClient（当前为 OpenAiModelProviderClient）
     → Spring AI ChatClient
 ```
+
+新增模型供应商时，在 `agent-server` 的 `infrastructure.model` 下实现
+`ModelProviderClient` 并注册为 Spring Bean。`agent-core` 的 `ModelGateway`
+契约和 Runtime 编排无需随供应商变化。一次执行的 `executionId` 在 Runtime
+调用外部依赖前生成，为后续模型、工具与执行审计关联提供统一标识。
 
 ## 模块结构
 

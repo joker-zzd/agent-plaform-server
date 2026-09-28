@@ -3,6 +3,7 @@ package com.agent.platform.infrastructure.model;
 import com.agent.platform.core.exception.AgentResourceNotFoundException;
 import com.agent.platform.core.model.ModelDefinition;
 import com.agent.platform.core.model.ModelDefinitionProvider;
+import com.agent.platform.infrastructure.model.constant.ModelProviderConstants;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +25,7 @@ public class InMemoryModelDefinitionProvider implements ModelDefinitionProvider 
             "default-model",
             ModelDefinition.builder()
                     .id("default-model")
-                    .provider("OPENAI")
+                    .provider(ModelProviderConstants.OPENAI)
                     .modelName("gpt-4o-mini")
                     .credentialKey("OPENAI_API_KEY")
                     .temperature(new BigDecimal("0.700"))
