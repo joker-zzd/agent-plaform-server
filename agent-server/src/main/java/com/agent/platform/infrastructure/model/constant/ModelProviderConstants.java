@@ -5,7 +5,9 @@ package com.agent.platform.infrastructure.model.constant;
  */
 public final class ModelProviderConstants {
 
-    /** OpenAI 供应商标识，与模型配置中的 provider 值一致。 */
+    /**
+     * OpenAI 供应商标识，与模型配置中的 provider 值一致。
+     */
     public static final String OPENAI = "OPENAI";
 
     private ModelProviderConstants() {

@@ -17,18 +17,28 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AgentDefinition {
 
-    /** Agent 唯一标识。 */
+    /**
+     * Agent 唯一标识。
+     */
     private String id;
 
-    /** Agent 显示名称。 */
+    /**
+     * Agent 显示名称。
+     */
     private String name;
 
-    /** System Prompt 唯一标识。 */
+    /**
+     * System Prompt 唯一标识。
+     */
     private String systemPromptId;
 
-    /** 固定使用的 Prompt 版本号，为空时使用当前发布版本。 */
+    /**
+     * 固定使用的 Prompt 版本号，为空时使用当前发布版本。
+     */
     private Integer promptVersion;
 
-    /** 平台内部模型唯一标识。 */
+    /**
+     * 平台内部模型唯一标识。
+     */
     private String modelId;
 }

@@ -22,7 +22,9 @@ import java.util.Objects;
 )
 public class InMemoryPromptProvider implements PromptProvider {
 
-    /** 不同 Agent 使用各自独立的 System Prompt。 */
+    /**
+     * 不同 Agent 使用各自独立的 System Prompt。
+     */
     private final Map<String, PromptDefinition> prompts = Map.of(
             "general-system-prompt",
             PromptDefinition.builder()

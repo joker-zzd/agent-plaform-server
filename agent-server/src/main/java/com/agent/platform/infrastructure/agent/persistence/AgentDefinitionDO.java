@@ -21,48 +21,70 @@ import java.time.OffsetDateTime;
 @Table("agent_definition")
 public class AgentDefinitionDO {
 
-    /** Agent 唯一业务标识。 */
+    /**
+     * Agent 唯一业务标识。
+     */
     @Id
     @Column("id")
     private String id;
 
-    /** Agent 显示名称。 */
+    /**
+     * Agent 显示名称。
+     */
     @Column("name")
     private String name;
 
-    /** Agent 用途和能力说明。 */
+    /**
+     * Agent 用途和能力说明。
+     */
     @Column("description")
     private String description;
 
-    /** Agent 默认使用的模型配置标识。 */
+    /**
+     * Agent 默认使用的模型配置标识。
+     */
     @Column("model_id")
     private String modelId;
 
-    /** Agent 使用的 System Prompt 标识。 */
+    /**
+     * Agent 使用的 System Prompt 标识。
+     */
     @Column("system_prompt_id")
     private String systemPromptId;
 
-    /** 固定使用的 Prompt 版本号，为空时使用当前发布版本。 */
+    /**
+     * 固定使用的 Prompt 版本号，为空时使用当前发布版本。
+     */
     @Column("prompt_version")
     private Integer promptVersion;
 
-    /** Agent 状态。 */
+    /**
+     * Agent 状态。
+     */
     @Column("status")
     private String status;
 
-    /** Agent 运行扩展配置，内容为 JSON。 */
+    /**
+     * Agent 运行扩展配置，内容为 JSON。
+     */
     @Column("runtime_config")
     private JsonbValue runtimeConfig;
 
-    /** 创建人标识。 */
+    /**
+     * 创建人标识。
+     */
     @Column("created_by")
     private String createdBy;
 
-    /** 创建时间。 */
+    /**
+     * 创建时间。
+     */
     @Column("created_time")
     private OffsetDateTime createdTime;
 
-    /** 最后更新时间。 */
+    /**
+     * 最后更新时间。
+     */
     @Column("updated_time")
     private OffsetDateTime updatedTime;
 }

@@ -16,6 +16,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ModelResult {
 
-    /** 模型生成的文本内容。 */
+    /**
+     * 模型生成的文本内容。
+     */
     private String content;
 }

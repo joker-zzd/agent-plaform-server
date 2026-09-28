@@ -21,7 +21,9 @@ import java.util.Map;
 )
 public class InMemoryAgentDefinitionProvider implements AgentDefinitionProvider {
 
-    /** 预置两个不同定位的 Agent，用于验证配置与 Runtime 已经解耦。 */
+    /**
+     * 预置两个不同定位的 Agent，用于验证配置与 Runtime 已经解耦。
+     */
     private final Map<String, AgentDefinition> definitions = Map.of(
             "general-agent",
             AgentDefinition.builder()

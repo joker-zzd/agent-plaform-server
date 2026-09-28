@@ -14,12 +14,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ModelRequest {
 
-    /** 平台内部模型 ID，用于后续多模型路由。 */
+    /**
+     * 平台内部模型 ID，用于后续多模型路由。
+     */
     private String modelId;
 
-    /** 当前 Agent 使用的 System Prompt。 */
+    /**
+     * 当前 Agent 使用的 System Prompt。
+     */
     private String systemPrompt;
 
-    /** 当前用户输入。 */
+    /**
+     * 当前用户输入。
+     */
     private String userPrompt;
 }

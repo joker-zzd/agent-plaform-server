@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class JsonbValue {
 
-    /** JSON 文本。 */
+    /**
+     * JSON 文本。
+     */
     private String value;
 }

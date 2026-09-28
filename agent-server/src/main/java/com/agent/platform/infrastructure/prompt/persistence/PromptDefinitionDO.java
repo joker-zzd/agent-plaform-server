@@ -20,36 +20,52 @@ import java.time.OffsetDateTime;
 @Table("prompt_definition")
 public class PromptDefinitionDO {
 
-    /** Prompt 唯一业务标识。 */
+    /**
+     * Prompt 唯一业务标识。
+     */
     @Id
     @Column("id")
     private String id;
 
-    /** Prompt 显示名称。 */
+    /**
+     * Prompt 显示名称。
+     */
     @Column("name")
     private String name;
 
-    /** Prompt 用途和功能说明。 */
+    /**
+     * Prompt 用途和功能说明。
+     */
     @Column("description")
     private String description;
 
-    /** 当前正式发布的版本号。 */
+    /**
+     * 当前正式发布的版本号。
+     */
     @Column("published_version")
     private Integer publishedVersion;
 
-    /** Prompt 是否启用。 */
+    /**
+     * Prompt 是否启用。
+     */
     @Column("enabled")
     private Boolean enabled;
 
-    /** 创建人标识。 */
+    /**
+     * 创建人标识。
+     */
     @Column("created_by")
     private String createdBy;
 
-    /** 创建时间。 */
+    /**
+     * 创建时间。
+     */
     @Column("created_time")
     private OffsetDateTime createdTime;
 
-    /** 最后更新时间。 */
+    /**
+     * 最后更新时间。
+     */
     @Column("updated_time")
     private OffsetDateTime updatedTime;
 }

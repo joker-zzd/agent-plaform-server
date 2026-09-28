@@ -19,24 +19,38 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class ModelDefinition {
 
-    /** 平台内部模型唯一标识。 */
+    /**
+     * 平台内部模型唯一标识。
+     */
     private String id;
 
-    /** 模型供应商标识。 */
+    /**
+     * 模型供应商标识。
+     */
     private String provider;
 
-    /** 模型供应商定义的真实模型名称。 */
+    /**
+     * 模型供应商定义的真实模型名称。
+     */
     private String modelName;
 
-    /** 模型服务接口地址，为空时使用客户端默认地址。 */
+    /**
+     * 模型服务接口地址，为空时使用客户端默认地址。
+     */
     private String baseUrl;
 
-    /** 模型密钥对应的环境变量或外部配置标识。 */
+    /**
+     * 模型密钥对应的环境变量或外部配置标识。
+     */
     private String credentialKey;
 
-    /** 模型生成随机性参数。 */
+    /**
+     * 模型生成随机性参数。
+     */
     private BigDecimal temperature;
 
-    /** 模型单次调用允许生成的最大 Token 数量。 */
+    /**
+     * 模型单次调用允许生成的最大 Token 数量。
+     */
     private Integer maxTokens;
 }

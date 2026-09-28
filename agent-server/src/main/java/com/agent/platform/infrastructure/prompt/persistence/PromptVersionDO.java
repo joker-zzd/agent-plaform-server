@@ -22,44 +22,64 @@ import java.util.UUID;
 @Table("prompt_version")
 public class PromptVersionDO {
 
-    /** Prompt 版本记录唯一标识。 */
+    /**
+     * Prompt 版本记录唯一标识。
+     */
     @Id
     @Column("id")
     private UUID id;
 
-    /** 所属 Prompt 的唯一标识。 */
+    /**
+     * 所属 Prompt 的唯一标识。
+     */
     @Column("prompt_id")
     private String promptId;
 
-    /** Prompt 版本号。 */
+    /**
+     * Prompt 版本号。
+     */
     @Column("version")
     private Integer version;
 
-    /** 当前版本的 System Prompt 正文。 */
+    /**
+     * 当前版本的 System Prompt 正文。
+     */
     @Column("system_text")
     private String systemText;
 
-    /** 动态变量及其约束，内容为 JSON。 */
+    /**
+     * 动态变量及其约束，内容为 JSON。
+     */
     @Column("variable_schema")
     private JsonbValue variableSchema;
 
-    /** 版本状态。 */
+    /**
+     * 版本状态。
+     */
     @Column("status")
     private String status;
 
-    /** 当前版本的变更说明。 */
+    /**
+     * 当前版本的变更说明。
+     */
     @Column("change_description")
     private String changeDescription;
 
-    /** 创建人标识。 */
+    /**
+     * 创建人标识。
+     */
     @Column("created_by")
     private String createdBy;
 
-    /** 创建时间。 */
+    /**
+     * 创建时间。
+     */
     @Column("created_time")
     private OffsetDateTime createdTime;
 
-    /** 正式发布时间。 */
+    /**
+     * 正式发布时间。
+     */
     @Column("published_time")
     private OffsetDateTime publishedTime;
 }

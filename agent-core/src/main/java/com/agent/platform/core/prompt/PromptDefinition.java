@@ -14,12 +14,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PromptDefinition {
 
-    /** Prompt 唯一标识。 */
+    /**
+     * Prompt 唯一标识。
+     */
     private String id;
 
-    /** 实际加载的 Prompt 版本号。 */
+    /**
+     * 实际加载的 Prompt 版本号。
+     */
     private Integer version;
 
-    /** System Prompt 正文。 */
+    /**
+     * System Prompt 正文。
+     */
     private String systemText;
 }

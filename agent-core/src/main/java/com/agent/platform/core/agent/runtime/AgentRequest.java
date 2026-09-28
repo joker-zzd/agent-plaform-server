@@ -18,18 +18,28 @@ import java.util.Map;
 @AllArgsConstructor
 public class AgentRequest {
 
-    /** 本次需要执行的 Agent ID。 */
+    /**
+     * 本次需要执行的 Agent ID。
+     */
     private String agentId;
 
-    /** 当前会话 ID。 */
+    /**
+     * 当前会话 ID。
+     */
     private String sessionId;
 
-    /** 当前用户 ID，后续用于权限和审计。 */
+    /**
+     * 当前用户 ID，后续用于权限和审计。
+     */
     private String userId;
 
-    /** 用户输入的消息正文。 */
+    /**
+     * 用户输入的消息正文。
+     */
     private String message;
 
-    /** 本次请求携带的动态上下文变量。 */
+    /**
+     * 本次请求携带的动态上下文变量。
+     */
     private Map<String, Object> variables;
 }
