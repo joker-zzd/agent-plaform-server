@@ -18,15 +18,12 @@ import java.time.Instant;
 @AllArgsConstructor
 public class ApiErrorResponse {
 
-    /** 稳定的业务错误码。 */
     @Schema(description = "稳定的业务错误码", example = "RESOURCE_NOT_FOUND")
     private String code;
 
-    /** 面向调用方的错误说明。 */
     @Schema(description = "面向调用方的错误说明", example = "Agent 不存在，ID：unknown-agent")
     private String message;
 
-    /** 错误发生时间。 */
     @Schema(description = "错误发生时间", example = "2026-09-15T10:30:00Z")
     private Instant timestamp;
 }
