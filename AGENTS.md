@@ -25,9 +25,9 @@
 - `core.policy`：权限和策略判断契约。
 - `core.execution`：执行记录及执行状态。
 - `core.exception`：平台核心异常。
-- `api.controller`：HTTP 接口，不编写 Agent 编排逻辑。
-- `api.request`：HTTP 入参对象。
-- `api.response`：HTTP 出参对象。
+- `controller`：HTTP 接口，不编写 Agent 编排逻辑。
+- `request`：HTTP 入参对象。
+- `response`：HTTP 出参对象。
 - `exception`：服务模块的 HTTP 异常映射。
 - `infrastructure`：Spring AI、存储和外部系统等技术实现；数据库实现位于 `agent-common`。
 - `configuration`：Spring Bean 与配置属性装配。

@@ -1,4 +1,4 @@
-package com.agent.platform.api.response;
+package com.agent.platform.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;

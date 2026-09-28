@@ -1,6 +1,6 @@
 package com.agent.platform.exception;
 
-import com.agent.platform.api.response.ApiErrorResponse;
+import com.agent.platform.response.ApiErrorResponse;
 
 import com.agent.platform.core.exception.AgentResourceNotFoundException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
