@@ -1,8 +1,6 @@
-package com.agent.platform.api.controller;
+package com.agent.platform.api.agent;
 
-import com.agent.platform.api.dto.ApiErrorResponse;
-import com.agent.platform.api.dto.RunAgentRequest;
-import com.agent.platform.api.dto.RunAgentResponse;
+import com.agent.platform.api.error.ApiErrorResponse;
 import com.agent.platform.core.agent.runtime.AgentRequest;
 import com.agent.platform.core.agent.runtime.AgentResult;
 import com.agent.platform.core.agent.runtime.AgentRuntime;

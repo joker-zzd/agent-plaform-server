@@ -1,4 +1,4 @@
-package com.agent.platform.api.dto;
+package com.agent.platform.api.agent;
 
 import com.agent.platform.core.agent.runtime.AgentResult;
 import io.swagger.v3.oas.annotations.media.Schema;

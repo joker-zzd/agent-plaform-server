@@ -1,6 +1,5 @@
-package com.agent.platform.api.advice;
+package com.agent.platform.api.error;
 
-import com.agent.platform.api.dto.ApiErrorResponse;
 import com.agent.platform.core.exception.AgentResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

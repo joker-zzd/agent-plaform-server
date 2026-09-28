@@ -1,4 +1,4 @@
-package com.agent.platform.api.dto;
+package com.agent.platform.api.error;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
