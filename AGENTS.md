@@ -6,10 +6,11 @@
 
 ## 2. 架构与依赖
 
-- 项目采用 Maven 多模块结构，当前包含 `agent-core` 和 `agent-server`。
-- 依赖方向固定为 `agent-server -> agent-core`，禁止反向依赖和循环依赖。
+- 项目采用 Maven 多模块结构，包含 `agent-core`、`agent-common` 和 `agent-service`。
+- 依赖方向固定为 `agent-service -> agent-common -> agent-core`，`agent-service` 也可直接依赖 `agent-core`；禁止反向依赖和循环依赖。
 - `agent-core` 保存通用领域模型、运行时流程及扩展契约，不依赖 Spring AI、Web、数据库和具体业务系统。
-- `agent-server` 保存 Spring Boot 启动、API、配置和基础设施适配实现。
+- `agent-common` 保存共享的 API 请求和响应对象、数据库持久化适配与迁移脚本。
+- `agent-service` 保存 Spring Boot 启动、Controller、异常处理、业务流程、配置和模型调用适配。
 - 电商、运维、HR 等业务能力通过 Adapter、扩展包或 MCP Server 接入，禁止写死在 Agent Core 中。
 - 跨层调用依赖接口，Core 不感知接口的具体技术实现。
 
@@ -24,8 +25,11 @@
 - `core.policy`：权限和策略判断契约。
 - `core.execution`：执行记录及执行状态。
 - `core.exception`：平台核心异常。
-- `api`：HTTP 接口和传输对象，不编写 Agent 编排逻辑。
-- `infrastructure`：Spring AI、存储和外部系统等技术实现。
+- `api.controller`：HTTP 接口，不编写 Agent 编排逻辑。
+- `api.request`：HTTP 入参对象。
+- `api.response`：HTTP 出参对象。
+- `exception`：服务模块的 HTTP 异常映射。
+- `infrastructure`：Spring AI、存储和外部系统等技术实现；数据库实现位于 `agent-common`。
 - `configuration`：Spring Bean 与配置属性装配。
 - 包按业务能力和功能职责划分，禁止仅按 `entity`、`interface`、`service`、`impl` 等 Java 类型机械分包。
 - 接口和与其紧密相关的领域对象可以放在同一个功能包中；接口的技术实现放在 `infrastructure` 对应能力包中。

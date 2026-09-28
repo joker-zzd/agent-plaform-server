@@ -54,7 +54,7 @@ HTTP 请求
     → Spring AI ChatClient
 ```
 
-新增模型供应商时，在 `agent-server` 的 `infrastructure.model` 下实现
+新增模型供应商时，在 `agent-service` 的 `infrastructure.model` 下实现
 `ModelProviderClient` 并注册为 Spring Bean。`agent-core` 的 `ModelGateway`
 契约和 Runtime 编排无需随供应商变化。一次执行的 `executionId` 在 Runtime
 调用外部依赖前生成，为后续模型、工具与执行审计关联提供统一标识。
@@ -65,14 +65,17 @@ HTTP 请求
 agent-platform
 ├── agent-core
 │   └── 通用领域模型、Agent Runtime 和扩展端口
-└── agent-server
-    └── Spring Boot 服务、HTTP API 和基础设施 Adapter
+├── agent-common
+│   └── API 请求与响应对象、数据库适配和 Flyway 脚本
+└── agent-service
+    └── Spring Boot 启动、Controller、业务流程和模型适配
 ```
 
 依赖方向固定为：
 
 ```text
-agent-server → agent-core
+agent-service → agent-common → agent-core
+agent-service → agent-core
 ```
 
 `agent-core` 不依赖 Spring AI、Web、数据库或具体业务系统。
@@ -224,7 +227,7 @@ $env:OPENAI_API_KEY = '<你的 OpenAI API Key>'
 本机私密配置优先于密码环境变量，用于避免 IDE 未刷新环境变量时使用旧密码。
 默认连接为 `jdbc:postgresql://localhost:5432/agent_platform`，用户名为 `postgres`。如需覆盖，可设置
 `AGENT_PLATFORM_DB_URL` 和 `AGENT_PLATFORM_DB_USERNAME`。数据库变更统一放在
-`agent-server/src/main/resources/db/migration`，由 Flyway 在启动时执行。
+`agent-common/src/main/resources/db/migration`，由 Flyway 在启动时执行。
 
 ### 环境要求
 
@@ -242,11 +245,11 @@ $env:OPENAI_MODEL="gpt-4o-mini"
 ### 启动服务
 
 ```powershell
-# 先构建并安装父工程、Core 和 Server 模块。
+# 先构建并安装父工程及各模块。
 mvn -q "-DskipTests" install
 
-# 只启动包含 Spring Boot 主类的 Server 模块。
-mvn -f agent-server/pom.xml spring-boot:run
+# 只启动包含 Spring Boot 主类的 Service 模块。
+mvn -f agent-service/pom.xml spring-boot:run
 ```
 
 ### 调用 Agent

@@ -24,7 +24,8 @@
 
     <modules>
         <module>agent-core</module>
-        <module>agent-server</module>
+        <module>agent-common</module>
+        <module>agent-service</module>
     </modules>
 
     <properties>

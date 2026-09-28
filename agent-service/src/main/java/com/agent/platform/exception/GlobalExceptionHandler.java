@@ -1,6 +1,9 @@
-package com.agent.platform.api.error;
+package com.agent.platform.exception;
+
+import com.agent.platform.api.response.ApiErrorResponse;
 
 import com.agent.platform.core.exception.AgentResourceNotFoundException;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -42,7 +45,7 @@ public class GlobalExceptionHandler {
     ) {
         String message = exception.getBindingResult().getFieldErrors().stream()
                 .findFirst()
-                .map(fieldError -> fieldError.getDefaultMessage())
+                .map(DefaultMessageSourceResolvable::getDefaultMessage)
                 .orElse("请求参数不合法");
 
         ApiErrorResponse response = ApiErrorResponse.builder()
